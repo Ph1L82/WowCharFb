@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="cl.philipsoft.ph1l.wowcharfb.views.ChooseFactionRaceActivity">
+
+    <TextView
+        android:id="@+id/chooseFactionTv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:paddingBottom="8dp"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
+        android:paddingTop="8dp"
+        android:text="@string/instructions_faction" />
+
+    <LinearLayout
+        android:id="@+id/factionsLl"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/chooseFactionTv"
+        android:orientation="horizontal">
+
+        <android.support.v7.widget.AppCompatImageButton
+            android:id="@+id/AllianceIbtn"
+            android:layout_width="0dp"
+            android:layout_height="100dp"
+            android:layout_marginBottom="16dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="4dp"
+            android:layout_marginTop="16dp"
+            android:layout_weight="1"
+            android:background="@color/allianceBackground"
+            android:scaleType="fitCenter"
+            android:src="@mipmap/ic_wow_alliance_48dp" />
+
+        <android.support.v7.widget.AppCompatImageButton
+            android:id="@+id/HordeIbtn"
+            android:layout_width="0dp"
+            android:layout_height="100dp"
+            android:layout_marginBottom="16dp"
+            android:layout_marginLeft="4dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginTop="16dp"
+            android:layout_weight="1"
+            android:background="@color/hordeBackground"
+            android:scaleType="fitCenter"
+            android:src="@mipmap/ic_wow_horde_48dp" />
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/chooseRaceTv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/factionsLl"
+        android:layout_centerHorizontal="true"
+        android:paddingBottom="8dp"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
+        android:paddingTop="8dp"
+        android:text="@string/instructions_faction" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/chooseRaceTv"
+        android:orientation="horizontal"
+        android:paddingBottom="8dp"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
+        android:paddingTop="8dp"
+        android:weightSum="2">
+
+        <RadioGroup
+            android:id="@+id/racesAllianceRg"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@color/allianceBackground"
+            android:layout_marginBottom="16dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="4dp"
+            android:layout_marginTop="16dp">
+
+            <RadioButton
+                android:id="@+id/raceHumanRb"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="@string/race_human" />
+
+            <RadioButton
+                android:id="@+id/raceDwarfRb"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="@string/race_dwarf" />
+
+            <RadioButton
+                android:id="@+id/raceNightElfRb"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="@string/race_Night_Elf" />
+
+            <RadioButton
+                android:id="@+id/raceGnomeRb"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="@string/race_gnome" />
+
+            <RadioButton
+                android:id="@+id/raceDraeneiRb"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="@string/race_Draenei" />
+
+            <RadioButton
+                android:id="@+id/raceWorgenRb"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="@string/race_Worgen" />
+
+        </RadioGroup>
+
+        <RadioGroup
+            android:id="@+id/racesHordeRg"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@color/hordeBackground"
+            android:layout_marginBottom="16dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="4dp"
+            android:layout_marginTop="16dp">
+
+            <RadioButton
+                android:id="@+id/raceOrcRb"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="@string/race_Orc" />
+
+            <RadioButton
+                android:id="@+id/raceUndeadRb"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="@string/race_Undead" />
+
+            <RadioButton
+                android:id="@+id/raceTaurenRb"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="@string/race_Tauren" />
+
+            <RadioButton
+                android:id="@+id/raceTrollRb"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="@string/race_Troll" />
+
+            <RadioButton
+                android:id="@+id/raceBloodElfRb"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="@string/race_BloodElf" />
+
+            <RadioButton
+                android:id="@+id/raceGoblinRb"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="@string/race_Goblin" />
+
+        </RadioGroup>
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/sendBtn"
+        android:layout_alignParentBottom="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginBottom="8dp"
+        android:text="@string/send_button"/>
+
+</RelativeLayout>

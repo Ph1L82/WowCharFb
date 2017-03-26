@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/characterLl"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bg_horde"
+    android:orientation="horizontal"
+    android:paddingBottom="8dp"
+    android:paddingLeft="16dp"
+    android:paddingRight="16dp"
+    android:paddingTop="8dp">
+
+    <QuickContactBadge
+        android:id="@+id/charFactionQcb"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="15dp"
+        app:srcCompat="@mipmap/ic_wow_flag_horde_24dp" />
+
+    <TextView
+        android:id="@+id/charRaceTv"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:layout_weight="1"
+        android:text="Night Elf"
+        android:textColor="@color/allianceFront" />
+
+    <TextView
+        android:id="@+id/charClassTv"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:layout_weight="1"
+        android:text="Hunter"
+        android:textColor="@color/allianceFront" />
+
+    <TextView
+        android:id="@+id/charNameTv"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+
+        android:layout_gravity="center_vertical"
+        android:layout_weight="1"
+        android:text="chucoco"
+        android:textColor="@color/allianceFront" />
+</LinearLayout>

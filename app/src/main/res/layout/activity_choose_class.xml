@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="cl.philipsoft.ph1l.wowcharfb.views.ChooseClassActivity">
+
+    <TextView
+        android:id="@+id/classesTv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginTop="8dp"
+        android:text="@string/instructions_class" />
+
+    <RadioGroup
+        android:id="@+id/classesRg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal">
+
+        <RadioButton
+            android:id="@+id/classDruid"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="@string/class_Druid" />
+
+        <RadioButton
+            android:id="@+id/classHunter"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="@string/class_Hunter" />
+
+        <RadioButton
+            android:id="@+id/classMage"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="@string/class_Mage" />
+
+        <RadioButton
+            android:id="@+id/classPaladin"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="@string/class_Paladin" />
+
+        <RadioButton
+            android:id="@+id/classPriest"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="@string/class_Priest" />
+
+        <RadioButton
+            android:id="@+id/classRogue"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="@string/class_Rogue" />
+
+        <RadioButton
+            android:id="@+id/classShaman"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="@string/class_Shaman" />
+
+        <RadioButton
+            android:id="@+id/classWarlock"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="@string/class_Warlock" />
+
+        <RadioButton
+            android:id="@+id/classWarrior"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="@string/class_Warrior" />
+
+
+    </RadioGroup>
+
+    <TextView
+        android:id="@+id/nameTv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginTop="8dp"
+        android:text="@string/instructions_character_name" />
+
+    <EditText
+        android:id="@+id/nameEt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginTop="8dp"
+        android:background="@color/allianceBackground"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Nombre"
+        android:textColor="@color/allianceFront" />
+
+    <Button
+        android:id="@+id/saveBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginTop="8dp"
+        android:background="@color/allianceBackground"
+        android:text="@string/send_button"
+        android:textColor="@color/allianceFront" />
+
+</LinearLayout>

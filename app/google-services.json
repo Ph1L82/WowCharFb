@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "568377091528",
+    "firebase_url": "https://wowcharfb.firebaseio.com",
+    "project_id": "wowcharfb",
+    "storage_bucket": "wowcharfb.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:568377091528:android:5c11d446ae8587e3",
+        "android_client_info": {
+          "package_name": "cl.philipsoft.ph1l.wowchar"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "568377091528-sk0h4j0pu540q68678c2no6s36m7dimn.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "cl.philipsoft.ph1l.wowchar",
+            "certificate_hash": "8d986ee5da6ac6500821366124965ff840092cdc"
+          }
+        },
+        {
+          "client_id": "568377091528-tlunu606emrd2h96bd6jct0noamlo014.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDZ9Xs5Otv3YrqT2hVh9Z7UVyNSlE9891U"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "568377091528-tlunu606emrd2h96bd6jct0noamlo014.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

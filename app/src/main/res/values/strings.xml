@@ -1,0 +1,66 @@
+<resources>
+    <!-- FACEBOOK AUTH -->
+    <string name="facebook_application_id" translatable="false">1344511102269237</string>
+    <!-- Facebook Application ID, prefixed by 'fb'.  Enables Chrome Custom tabs. -->
+    <string name="facebook_login_protocol_scheme" translatable="false">fb1344511102269237</string>
+    <!-- TWITTER AUTH -->
+    <string name="twitter_consumer_key" translatable="false">TB2YX6uiQPZh1dICzkZt2qO5I</string>
+    <string name="twitter_consumer_secret" translatable="false">KiKM0AQWOSSH4Ww1kiFk0Y09YjR2O26NDRIybesBmTsfWe2HAt</string>
+
+
+    <string name="app_name">WoW :: Characters</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="instructions_faction">Selecciona la facción que te interesa.</string>
+    <string name="instructions_race">Selecciona la raza que te interesa. Antes debes haber elegido una facción.</string>
+    <string name="instructions_class">Selecciona la clase que te interesa. Antes debes haber elegido una raza.</string>
+    <string name="instructions_character_name">Ingresa el nombre que quieres darle a tu personaje.</string>
+    <string name="send_char_selection">Cuando hayas seleccionado facción, raza y clase, presiona (>) para ver tu resultado.</string>
+    <string name="reset_btn">Resetear Estatadísticas</string>
+    <string name="level">Nivel: 1</string>
+    <string name="character_name">Nombre: </string>
+    <string name="character_class">Clase: </string>
+    <string name="character_race">Raza: </string>
+    <string name="character_faction">Facción: </string>
+    <string name="statistics">Estadísticas de: </string>
+    <string name="stamina">Stamina: </string>
+    <string name="strength">Strength: </string>
+    <string name="intellect">Intellect: </string>
+    <string name="agility">Agility: </string>
+    <string name="spirit">Spirit: </string>
+
+    <string name="send_button">Siguiente</string>
+
+    <string name="faction_alliance">Alianza</string>
+    <string name="faction_horde">Horda</string>
+
+    <string name="race_human">Humano</string>
+    <string name="race_dwarf">Enano</string>
+    <string name="race_gnome">Gnomo</string>
+    <string name="race_Night_Elf">Elfo Nocturno</string>
+    <string name="race_Draenei">Draenei</string>
+    <string name="race_Worgen">Huargo</string>
+    <string name="race_Orc">Orco</string>
+    <string name="race_Troll">Troll</string>
+    <string name="race_Tauren">Tauren</string>
+    <string name="race_Undead">No-muerto</string>
+    <string name="race_BloodElf">Elfo de Sangre</string>
+    <string name="race_Goblin">Goblin</string>
+
+    <string name="class_Druid">Druida</string>
+    <string name="class_Hunter">Cazador</string>
+    <string name="class_Mage">Mago</string>
+    <string name="class_Paladin">Paladín</string>
+    <string name="class_Priest">Sacerdote</string>
+    <string name="class_Rogue">Pícaro</string>
+    <string name="class_Shaman">Chamán</string>
+    <string name="class_Warlock">Brujo</string>
+    <string name="class_Warrior">Guerrero</string>
+    <string name="class_Death_Knight">Caballero de la Muerte</string>
+    <string name="title_activity_character_details">CharacterDetailsActivity</string>
+
+    <string name="title_activity_login">LoginActivity</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
+
+</resources>

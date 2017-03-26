@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item>
+        <color android:color="@color/allianceBackground"></color>
+    </item>
+
+    <item android:bottom="1dp">
+
+        <shape xmlns:android="http://schemas.android.com/apk/res/android"
+            android:shape="line">
+            <gradient
+                android:angle="45"
+                android:endColor="@color/allianceFront"
+                android:startColor="@color/allianceBackground"
+                android:type="linear" />
+        </shape>
+    </item>
+</layer-list>
