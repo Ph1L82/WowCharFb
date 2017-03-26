@@ -14,6 +14,8 @@ import android.widget.Toast;
 import java.util.List;
 
 import cl.philipsoft.ph1l.wowcharfb.R;
+import cl.philipsoft.ph1l.wowcharfb.data.CurrentUser;
+import cl.philipsoft.ph1l.wowcharfb.data.Nodes;
 import cl.philipsoft.ph1l.wowcharfb.models.Character;
 import cl.philipsoft.ph1l.wowcharfb.models.Class;
 import cl.philipsoft.ph1l.wowcharfb.models.Faction;
@@ -56,6 +58,9 @@ public class ChooseClassActivity extends AppCompatActivity implements CharacterC
                     CreateCharacter createCharacter = new CreateCharacter(ChooseClassActivity.this);
                     Character character = new Character(charFaction, charRace, charClass, name.getText().toString());
                     createCharacter.validation(character, factionID, raceID, classID);
+
+                    new Nodes().userCharacters(new CurrentUser().userID()).push().setValue(character);
+
                     Intent intent = new Intent(ChooseClassActivity.this, MainActivity.class);
                     startActivity(intent);
                 } else {

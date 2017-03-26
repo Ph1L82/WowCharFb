@@ -61,10 +61,15 @@ public class MainActivity extends AppCompatActivity implements CharacterCallback
         return super.onOptionsItemSelected(item);
     }
 
+//    @Override
+//    public void created(Character character) {
+//        Log.d("WOWC", "created: Personaje creado: " + character.getCharacterName());
+//        characterListFragment.addCharacter(character);
+//    }
+
     @Override
     public void created(Character character) {
-        Log.d("WOWC", "created: Personaje creado: " + character.getCharacterName());
-        characterListFragment.addCharacter(character);
+
     }
 
     @Override

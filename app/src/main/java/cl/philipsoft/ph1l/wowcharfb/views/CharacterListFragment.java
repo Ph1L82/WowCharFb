@@ -12,17 +12,22 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.firebase.ui.database.FirebaseRecyclerAdapter;
+
 import cl.philipsoft.ph1l.wowcharfb.R;
 import cl.philipsoft.ph1l.wowcharfb.adapters.CharacterClickListener;
 import cl.philipsoft.ph1l.wowcharfb.adapters.CharactersAdapter;
+import cl.philipsoft.ph1l.wowcharfb.data.CurrentUser;
+import cl.philipsoft.ph1l.wowcharfb.data.Nodes;
 import cl.philipsoft.ph1l.wowcharfb.models.Character;
 
 /**
  * A placeholder fragment containing a simple view.
  */
 public class CharacterListFragment extends Fragment implements CharacterClickListener {
+
     public static final String CHARACTER = "cl.philipsoft.ph1l.wowchar.views.CharacterListFragment.CHARACTER";
-    private CharactersAdapter charactersAdapter;
+
 
     public CharacterListFragment() {
     }
@@ -41,13 +46,10 @@ public class CharacterListFragment extends Fragment implements CharacterClickLis
         recyclerView.setHasFixedSize(true);
 
         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
-
         recyclerView.setLayoutManager(layoutManager);
 
-
-
-//        charactersAdapter = new CharactersAdapter(this);
-//        recyclerView.setAdapter(charactersAdapter);
+        CharactersAdapter charactersAdapter = new CharactersAdapter(new CurrentUser().userID());
+        recyclerView.setAdapter(charactersAdapter);
 
         final SwipeRefreshLayout reloadSr = (SwipeRefreshLayout) view.findViewById(R.id.reloadSr);
         reloadSr.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
@@ -56,7 +58,7 @@ public class CharacterListFragment extends Fragment implements CharacterClickLis
                 new Handler().postDelayed(new Runnable() {
                     @Override
                     public void run() {
-                        charactersAdapter.forceReload();
+                      //  charactersAdapter.forceReload();
                         reloadSr.setRefreshing(false);
                     }
                 }, 800);
@@ -64,9 +66,9 @@ public class CharacterListFragment extends Fragment implements CharacterClickLis
         });
     }
 
-    public void addCharacter(Character character) {
-        charactersAdapter.addCharacter(character);
-    }
+//    public void addCharacter(Character character) {
+//        charactersAdapter.addCharacter(character);
+//    }
 
     @Override
     public void clickedId(Long id) {
@@ -90,5 +92,14 @@ public class CharacterListFragment extends Fragment implements CharacterClickLis
         intent.putExtra("classID", classID);
         intent.putExtra("characterID", characterID);
         startActivity(intent);
+    }
+
+    public static class CharacterHolder extends RecyclerView.ViewHolder {
+
+        public CharacterHolder(View itemView) {
+            super(itemView);
+        }
+
+
     }
 }

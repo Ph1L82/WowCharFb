@@ -1,5 +1,7 @@
 package cl.philipsoft.ph1l.wowcharfb.views;
 
+import cl.philipsoft.ph1l.wowcharfb.data.CurrentUser;
+import cl.philipsoft.ph1l.wowcharfb.data.Nodes;
 import cl.philipsoft.ph1l.wowcharfb.models.Character;
 import cl.philipsoft.ph1l.wowcharfb.models.Class;
 import cl.philipsoft.ph1l.wowcharfb.models.Faction;
@@ -27,7 +29,11 @@ public class CreateCharacter {
                 characterRace.save();
                 Class characterClass = Class.findById(Class.class, charClass);
                 characterClass.save();
-                character.save();
+//                character.save();
+                String uid = new CurrentUser().userID().toString();
+                String characterID = uid + character.getCharacterName().toString();
+                new Nodes().userCharacters(uid).child(characterID).setValue(character);
+
                 callback.created(character);
             } else {
                 callback.noName();

@@ -2,7 +2,6 @@ package cl.philipsoft.ph1l.wowcharfb.views;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
@@ -11,24 +10,32 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.ValueEventListener;
 
 import cl.philipsoft.ph1l.wowcharfb.R;
+import cl.philipsoft.ph1l.wowcharfb.data.CurrentUser;
+import cl.philipsoft.ph1l.wowcharfb.data.Nodes;
 import cl.philipsoft.ph1l.wowcharfb.models.Character;
 import cl.philipsoft.ph1l.wowcharfb.models.Class;
 import cl.philipsoft.ph1l.wowcharfb.models.Faction;
 import cl.philipsoft.ph1l.wowcharfb.models.Race;
 
 public class CharacterDetailsActivity extends AppCompatActivity {
-    TextView nameTv = (TextView) findViewById(R.id.nameTv);
-    TextView factionTv = (TextView) findViewById(R.id.charFactionTv);
-    TextView raceTv = (TextView) findViewById(R.id.charRaceTv);
-    TextView classTv = (TextView) findViewById(R.id.charClassTv);
-    TextView levelTextView = (TextView) findViewById(R.id.levelTv);
-    TextView staminaTextView = (TextView) findViewById(R.id.staminaTv);
-    TextView strengthTextView = (TextView) findViewById(R.id.strengthTv);
-    TextView agilityTextView = (TextView) findViewById(R.id.agilityTv);
-    TextView intellectTextView = (TextView) findViewById(R.id.intellectTv);
-    TextView spiritTextView = (TextView) findViewById(R.id.spiritTv);
+    Character character;
+    TextView nameTv;
+    TextView factionTv;
+    TextView raceTv;
+    TextView classTv;
+    TextView levelTextView;
+    TextView staminaTextView;
+    TextView strengthTextView;
+    TextView agilityTextView;
+    TextView intellectTextView;
+    TextView spiritTextView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,9 +44,21 @@ public class CharacterDetailsActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 //        Character character = (Character) getIntent().getSerializableExtra("Character");
-        final Character character = Character.findById(Character.class, getIntent().getLongExtra("characterID", 1));
-        Log.d("WOWC", "onCreate: CHARACTER NAME : " + character.getCharacterName());
-        Log.d("WOWC", "onCreate: CHARACTER ID : " + character.getId());
+//        final Character character = Character.findById(Character.class, getIntent().getLongExtra("characterID", 1));
+//        Character character = new Nodes().userCharacters(new CurrentUser().userID()).getKey();
+        new Nodes().userCharacters(new CurrentUser().userID()).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                character = dataSnapshot.getValue(Character.class);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+//        Log.d("WOWC", "onCreate: CHARACTER NAME : " + character.getCharacterName());
+//        Log.d("WOWC", "onCreate: CHARACTER ID : " + character.getId());
         final Faction characterFaction = Faction.findById(Faction.class, getIntent().getLongExtra("factionID", 1));
         Log.d("WOWC", "onCreate: FACTION NAME : " + characterFaction.getName());
         Log.d("WOWC", "onCreate: FACTION ID : " + characterFaction.getId());
@@ -66,6 +85,18 @@ public class CharacterDetailsActivity extends AppCompatActivity {
         setTitle(character.getCharacterName());
 
 
+        nameTv = (TextView) findViewById(R.id.nameTv);
+        factionTv = (TextView) findViewById(R.id.charFactionTv);
+        raceTv = (TextView) findViewById(R.id.charRaceTv);
+        classTv = (TextView) findViewById(R.id.charClassTv);
+
+        levelTextView = (TextView) findViewById(R.id.levelTv);
+        staminaTextView = (TextView) findViewById(R.id.staminaTv);
+        strengthTextView = (TextView) findViewById(R.id.strengthTv);
+        agilityTextView = (TextView) findViewById(R.id.agilityTv);
+        intellectTextView = (TextView) findViewById(R.id.intellectTv);
+        spiritTextView = (TextView) findViewById(R.id.spiritTv);
+
         nameTv.setText(character.getCharacterName().toString());
         factionTv.setText(character.getCharacterFaction().getName());
         raceTv.setText(character.getCharacterRace().getRaceName());
@@ -84,15 +115,14 @@ public class CharacterDetailsActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 new AlertDialog.Builder(CharacterDetailsActivity.this)
-                        .setTitle("Eliminar personaje: " + character.getCharacterName().toString())
+                        .setTitle("Compartir personaje: " + character.getCharacterName().toString())
                         .setMessage("¿Está seguro?")
                         .setIcon(android.R.drawable.ic_input_delete)
                         .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
-                                character.delete();
-                                Intent intent = new Intent(CharacterDetailsActivity.this, MainActivity.class);
-                                startActivity(intent);
+                                character.setShared(true);
+                                Toast.makeText(CharacterDetailsActivity.this, "", Toast.LENGTH_SHORT).show();
                             }
                         })
                         .setNegativeButton(android.R.string.no, null).show();

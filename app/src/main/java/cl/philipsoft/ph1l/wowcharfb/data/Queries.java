@@ -40,13 +40,4 @@ public class Queries {
         }
         return classes;
     }
-
-    public List<Character> characters() {
-        List<Character> characters = new ArrayList<>();
-        List<Character> characterList = Character.listAll(Character.class);
-        if (characterList != null && characterList.size() > 0) {
-            characters.addAll(characterList);
-        }
-        return characters;
-    }
 }
