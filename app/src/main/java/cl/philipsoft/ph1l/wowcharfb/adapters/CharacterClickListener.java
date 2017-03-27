@@ -9,7 +9,9 @@ import cl.philipsoft.ph1l.wowcharfb.models.Character;
 public interface CharacterClickListener {
 
     void clickedId(Long id);
-
+    void viewClickedCharId(String id);
     void clickedCharacter(Character character);
     void clickedIds(Long factionID, Long raceID, Long classID, Long characterID);
+
+    void removeClickedCharId(String id);
 }

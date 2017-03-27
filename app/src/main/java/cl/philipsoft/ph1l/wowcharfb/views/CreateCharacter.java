@@ -33,7 +33,6 @@ public class CreateCharacter {
                 String uid = new CurrentUser().userID().toString();
                 String characterID = uid + character.getCharacterName().toString();
                 new Nodes().userCharacters(uid).child(characterID).setValue(character);
-
                 callback.created(character);
             } else {
                 callback.noName();

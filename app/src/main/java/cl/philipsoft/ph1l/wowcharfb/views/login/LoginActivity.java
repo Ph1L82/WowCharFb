@@ -14,6 +14,9 @@ import java.util.Arrays;
 
 import cl.philipsoft.ph1l.wowcharfb.BuildConfig;
 import cl.philipsoft.ph1l.wowcharfb.R;
+import cl.philipsoft.ph1l.wowcharfb.data.CurrentUser;
+import cl.philipsoft.ph1l.wowcharfb.data.Nodes;
+import cl.philipsoft.ph1l.wowcharfb.models.User;
 import cl.philipsoft.ph1l.wowcharfb.views.MainActivity;
 
 /**
@@ -50,6 +53,11 @@ public class LoginActivity extends AppCompatActivity {
 
             // Successfully signed in
             if (resultCode == ResultCodes.OK) {
+                User user = new User();
+                user.setUid(new CurrentUser().userID());
+                user.setEmail(new CurrentUser().email());
+                user.setName(new CurrentUser().name());
+                new Nodes().users().child(user.getUid()).setValue(user);
                 startActivity(new Intent(this, MainActivity.class));
                 finish();
                 return;

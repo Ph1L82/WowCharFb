@@ -1,5 +1,7 @@
 package cl.philipsoft.ph1l.wowcharfb.adapters;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.os.Build;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.RecyclerView;
@@ -11,7 +13,6 @@ import android.widget.QuickContactBadge;
 import android.widget.TextView;
 
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
-import com.google.firebase.database.Query;
 
 import cl.philipsoft.ph1l.wowcharfb.R;
 import cl.philipsoft.ph1l.wowcharfb.data.CurrentUser;
@@ -47,7 +48,7 @@ public class CharactersAdapter extends FirebaseRecyclerAdapter<Character, Charac
     }
 
     @Override
-    protected void populateViewHolder(CharacterHolder viewHolder, Character model, int position) {
+    protected void populateViewHolder(CharacterHolder viewHolder, final Character model, int position) {
         final Faction characterFaction = model.getCharacterFaction();
         final Race characterRace = model.getCharacterRace();
         final Class characterClass = model.getCharacterClass();
@@ -84,6 +85,38 @@ public class CharactersAdapter extends FirebaseRecyclerAdapter<Character, Charac
         viewHolder.charClass.setText(character.getCharacterClass().getClassName());
         viewHolder.charName.setText(character.getCharacterName());
 
+        viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String id = new CurrentUser().userID() + model.getCharacterName().toString();
+                characterClickListener.viewClickedCharId(id);
+            }
+        });
+
+        viewHolder.itemView.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                new AlertDialog.Builder(v.getContext())
+                        .setIcon(R.drawable.com_facebook_close)
+                        .setTitle("Eliminar personaje")
+                        .setMessage("Eliminarás el personaje de forma permanente")
+                        .setPositiveButton("Eliminar", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                String id = new CurrentUser().userID() + model.getCharacterName().toString();
+                                characterClickListener.removeClickedCharId(id);
+                            }
+                        })
+                .setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                    }
+                });
+                return true;
+            }
+        });
+
     }
 
     @Override
@@ -91,20 +124,7 @@ public class CharactersAdapter extends FirebaseRecyclerAdapter<Character, Charac
         super.onDataChanged();
     }
 
-//    @Override
-//    public int getItemCount() {
-//        return characters.size();
-//    }
-//
-//    public void addCharacter(Character character) {
-//        characters.add(character);
-//        notifyDataSetChanged();
-//    }
-//
-//    public void forceReload() {
-//        characters = new Queries().characters();
-//        notifyDataSetChanged();
-//    }
+
 
 // ====>>>>   Clase interna CharacterHolder
 
@@ -120,6 +140,8 @@ public class CharactersAdapter extends FirebaseRecyclerAdapter<Character, Charac
             charClass = (TextView) itemView.findViewById(R.id.charClassTv);
             charName = (TextView) itemView.findViewById(R.id.charNameTv);
             row = itemView.findViewById(R.id.characterLl);
+
+
         }
     }
 }

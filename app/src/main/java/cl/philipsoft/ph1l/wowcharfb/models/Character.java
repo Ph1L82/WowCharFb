@@ -7,6 +7,7 @@ import java.io.Serializable;
  */
 
 public class Character implements Serializable {
+    private String id;
     private Faction characterFaction;
     private Race characterRace;
     private Class characterClass;
@@ -18,6 +19,14 @@ public class Character implements Serializable {
 
     public boolean isShared() {
         return shared;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     public void setShared(boolean shared) {

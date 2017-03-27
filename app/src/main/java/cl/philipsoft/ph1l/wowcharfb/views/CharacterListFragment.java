@@ -58,7 +58,6 @@ public class CharacterListFragment extends Fragment implements CharacterClickLis
                 new Handler().postDelayed(new Runnable() {
                     @Override
                     public void run() {
-                      //  charactersAdapter.forceReload();
                         reloadSr.setRefreshing(false);
                     }
                 }, 800);
@@ -72,6 +71,13 @@ public class CharacterListFragment extends Fragment implements CharacterClickLis
 
     @Override
     public void clickedId(Long id) {
+        Intent intent = new Intent(getActivity(), CharacterDetailsActivity.class);
+        intent.putExtra("id", id);
+        startActivity(intent);
+    }
+
+    @Override
+    public void viewClickedCharId(String id) {
         Intent intent = new Intent(getActivity(), CharacterDetailsActivity.class);
         intent.putExtra("id", id);
         startActivity(intent);
@@ -92,6 +98,11 @@ public class CharacterListFragment extends Fragment implements CharacterClickLis
         intent.putExtra("classID", classID);
         intent.putExtra("characterID", characterID);
         startActivity(intent);
+    }
+
+    @Override
+    public void removeClickedCharId(String id) {
+        new Nodes().userCharacters(new CurrentUser().userID()).removeValue();
     }
 
     public static class CharacterHolder extends RecyclerView.ViewHolder {

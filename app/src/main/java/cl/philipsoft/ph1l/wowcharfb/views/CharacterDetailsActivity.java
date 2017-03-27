@@ -57,8 +57,8 @@ public class CharacterDetailsActivity extends AppCompatActivity {
 
             }
         });
-//        Log.d("WOWC", "onCreate: CHARACTER NAME : " + character.getCharacterName());
-//        Log.d("WOWC", "onCreate: CHARACTER ID : " + character.getId());
+        Log.d("WOWC", "onCreate: CHARACTER NAME : " + character.getCharacterName());
+        Log.d("WOWC", "onCreate: CHARACTER ID : " + character.getId());
         final Faction characterFaction = Faction.findById(Faction.class, getIntent().getLongExtra("factionID", 1));
         Log.d("WOWC", "onCreate: FACTION NAME : " + characterFaction.getName());
         Log.d("WOWC", "onCreate: FACTION ID : " + characterFaction.getId());
@@ -89,7 +89,6 @@ public class CharacterDetailsActivity extends AppCompatActivity {
         factionTv = (TextView) findViewById(R.id.charFactionTv);
         raceTv = (TextView) findViewById(R.id.charRaceTv);
         classTv = (TextView) findViewById(R.id.charClassTv);
-
         levelTextView = (TextView) findViewById(R.id.levelTv);
         staminaTextView = (TextView) findViewById(R.id.staminaTv);
         strengthTextView = (TextView) findViewById(R.id.strengthTv);
@@ -97,17 +96,16 @@ public class CharacterDetailsActivity extends AppCompatActivity {
         intellectTextView = (TextView) findViewById(R.id.intellectTv);
         spiritTextView = (TextView) findViewById(R.id.spiritTv);
 
-        nameTv.setText(character.getCharacterName().toString());
-        factionTv.setText(character.getCharacterFaction().getName());
-        raceTv.setText(character.getCharacterRace().getRaceName());
-        classTv.setText(character.getCharacterClass().getClassName());
-
-        levelTextView.setText(character.getCharacterLevel());
-        staminaTextView.setText(character.getStamina());
-        strengthTextView.setText(character.getStrength());
-        agilityTextView.setText(character.getAgility());
-        intellectTextView.setText(character.getIntellect());
-        spiritTextView.setText(character.getSpirit());
+        nameTv.setText(String.valueOf(character.getCharacterName()));
+        factionTv.setText(String.valueOf(character.getCharacterFaction().getName()));
+        raceTv.setText(String.valueOf(character.getCharacterRace().getRaceName()));
+        classTv.setText(String.valueOf(character.getCharacterClass().getClassName()));
+        levelTextView.setText(String.valueOf(character.getCharacterLevel()));
+        staminaTextView.setText(String.valueOf(character.getStamina()));
+        strengthTextView.setText(String.valueOf(character.getStrength()));
+        agilityTextView.setText(String.valueOf(character.getAgility()));
+        intellectTextView.setText(String.valueOf(character.getIntellect()));
+        spiritTextView.setText(String.valueOf(character.getSpirit()));
 
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.charDetailFab);
