@@ -29,7 +29,6 @@ public class CreateCharacter {
                 characterRace.save();
                 Class characterClass = Class.findById(Class.class, charClass);
                 characterClass.save();
-//                character.save();
                 String uid = new CurrentUser().userID();
                 String characterID = uid + character.getCharacterName();
                 character.setId(characterID);

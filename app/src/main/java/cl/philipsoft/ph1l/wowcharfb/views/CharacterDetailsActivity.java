@@ -2,6 +2,7 @@ package cl.philipsoft.ph1l.wowcharfb.views;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
@@ -44,7 +45,10 @@ public class CharacterDetailsActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        new Nodes().userCharacters(new CurrentUser().userID()).addListenerForSingleValueEvent(new ValueEventListener() {
+        Intent intent = getIntent();
+        String id = intent.getStringExtra("id");
+
+        new Nodes().userCharacters(new CurrentUser().userID()).child(id).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 character = dataSnapshot.getValue(Character.class);
@@ -68,6 +72,7 @@ public class CharacterDetailsActivity extends AppCompatActivity {
         Log.d("WOWC", "onCreate: CLASS ID : " + characterClass.getId());
         ImageView factionShield = (ImageView) findViewById(R.id.factionShield);
         Faction faction = character.getCharacterFaction();
+//        switch can't manage long.... u.u
         if (characterFaction.getId() == 1) {
             factionShield.setImageResource(R.mipmap.ic_wow_alliance_48dp);
             factionShield.setBackgroundColor(getResources().getColor(R.color.allianceBackground));
@@ -110,7 +115,7 @@ public class CharacterDetailsActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 new AlertDialog.Builder(CharacterDetailsActivity.this)
-                        .setTitle("Compartir personaje: " + character.getCharacterName().toString())
+                        .setTitle("Compartir personaje: " + character.getCharacterName())
                         .setMessage("¿Está seguro?")
                         .setIcon(android.R.drawable.ic_input_delete)
                         .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
