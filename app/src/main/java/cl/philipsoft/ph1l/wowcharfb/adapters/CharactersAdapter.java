@@ -89,6 +89,8 @@ public class CharactersAdapter extends FirebaseRecyclerAdapter<Character, Charac
             @Override
             public void onClick(View v) {
                 String id = new CurrentUser().userID() + model.getCharacterName().toString();
+//                Toast.makeText(v.getContext(), "CharID: " + id, Toast.LENGTH_SHORT).show();
+                Log.d("WOWC", "CHARACTERSADAPTER CharID: " + id);
                 characterClickListener.viewClickedCharId(id);
             }
         });
@@ -107,12 +109,12 @@ public class CharactersAdapter extends FirebaseRecyclerAdapter<Character, Charac
                                 characterClickListener.removeClickedCharId(id);
                             }
                         })
-                .setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
+                        .setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
 
-                    }
-                });
+                            }
+                        });
                 return true;
             }
         });
@@ -123,7 +125,6 @@ public class CharactersAdapter extends FirebaseRecyclerAdapter<Character, Charac
     protected void onDataChanged() {
         super.onDataChanged();
     }
-
 
 
 // ====>>>>   Clase interna CharacterHolder

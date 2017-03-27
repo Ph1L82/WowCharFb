@@ -18,7 +18,6 @@ import cl.philipsoft.ph1l.wowcharfb.adapters.CharacterClickListener;
 import cl.philipsoft.ph1l.wowcharfb.adapters.CharactersAdapter;
 import cl.philipsoft.ph1l.wowcharfb.data.CurrentUser;
 import cl.philipsoft.ph1l.wowcharfb.data.Nodes;
-import cl.philipsoft.ph1l.wowcharfb.models.Character;
 
 /**
  * A placeholder fragment containing a simple view.
@@ -26,7 +25,6 @@ import cl.philipsoft.ph1l.wowcharfb.models.Character;
 public class CharacterListFragment extends Fragment implements CharacterClickListener {
 
     public static final String CHARACTER = "cl.philipsoft.ph1l.wowchar.views.CharacterListFragment.CHARACTER";
-
 
     public CharacterListFragment() {
     }
@@ -69,12 +67,7 @@ public class CharacterListFragment extends Fragment implements CharacterClickLis
 //        charactersAdapter.addCharacter(character);
 //    }
 
-    @Override
-    public void clickedId(Long id) {
-        Intent intent = new Intent(getActivity(), CharacterDetailsActivity.class);
-        intent.putExtra("id", id);
-        startActivity(intent);
-    }
+
 
     @Override
     public void viewClickedCharId(String id) {
@@ -84,26 +77,10 @@ public class CharacterListFragment extends Fragment implements CharacterClickLis
     }
 
     @Override
-    public void clickedCharacter(Character character) {
-        Intent intent = new Intent(getActivity(), CharacterDetailsActivity.class);
-        intent.putExtra("Character", character);
-        startActivity(intent);
-    }
-
-    @Override
-    public void clickedIds(Long factionID, Long raceID, Long classID, Long characterID) {
-        Intent intent = new Intent(getActivity(), CharacterDetailsActivity.class);
-        intent.putExtra("factionID", factionID);
-        intent.putExtra("raceID", raceID);
-        intent.putExtra("classID", classID);
-        intent.putExtra("characterID", characterID);
-        startActivity(intent);
-    }
-
-    @Override
     public void removeClickedCharId(String id) {
         new Nodes().userCharacters(new CurrentUser().userID()).removeValue();
     }
+
 
     public static class CharacterHolder extends RecyclerView.ViewHolder {
 

@@ -2,6 +2,7 @@ package cl.philipsoft.ph1l.wowcharfb.views;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -11,12 +12,19 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
+import com.firebase.ui.auth.AuthUI;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+
 import cl.philipsoft.ph1l.wowcharfb.R;
 import cl.philipsoft.ph1l.wowcharfb.data.DataSeeder;
 import cl.philipsoft.ph1l.wowcharfb.data.Queries;
 import cl.philipsoft.ph1l.wowcharfb.models.Character;
+import cl.philipsoft.ph1l.wowcharfb.views.login.LoginActivity;
+import cl.philipsoft.ph1l.wowcharfb.views.login.LogoutCallback;
+import cl.philipsoft.ph1l.wowcharfb.views.login.LogoutValidation;
 
-public class MainActivity extends AppCompatActivity implements CharacterCallback {
+public class MainActivity extends AppCompatActivity implements CharacterCallback, LogoutCallback {
 
     private CharacterListFragment characterListFragment;
 
@@ -54,22 +62,19 @@ public class MainActivity extends AppCompatActivity implements CharacterCallback
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
+        switch (id) {
+            case R.id.action_signOut:
+                Log.d("WOWC:LOGOUT", "onOptionsItemSelected: Salir seleccionado");
+                new LogoutValidation(this).validate();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
         }
-
-        return super.onOptionsItemSelected(item);
     }
-
-//    @Override
-//    public void created(Character character) {
-//        Log.d("WOWC", "created: Personaje creado: " + character.getCharacterName());
-//        characterListFragment.addCharacter(character);
-//    }
 
     @Override
     public void created(Character character) {
-
+        Log.d("WOWC", "created: Personaje creado: " + character.getCharacterName());
     }
 
     @Override
@@ -106,5 +111,18 @@ public class MainActivity extends AppCompatActivity implements CharacterCallback
             Log.d("WOWCDATA", "dataLoader: Clases creadas");
         }
 
+    }
+
+    @Override
+    public void signOut() {
+        AuthUI.getInstance()
+                .signOut(this)
+                .addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        Toast.makeText(MainActivity.this, "Haz cerrado tu sesión", Toast.LENGTH_SHORT).show();
+                        startActivity(new Intent(MainActivity.this, LoginActivity.class));
+                    }
+                });
     }
 }

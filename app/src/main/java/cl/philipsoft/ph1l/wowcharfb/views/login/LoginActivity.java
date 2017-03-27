@@ -93,4 +93,5 @@ public class LoginActivity extends AppCompatActivity implements LoginCallback {
                         .build(),
                 RC_SIGN_IN);
     }
+
 }
