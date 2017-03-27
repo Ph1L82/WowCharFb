@@ -43,9 +43,7 @@ public class CharacterDetailsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_character_details);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-//        Character character = (Character) getIntent().getSerializableExtra("Character");
-//        final Character character = Character.findById(Character.class, getIntent().getLongExtra("characterID", 1));
-//        Character character = new Nodes().userCharacters(new CurrentUser().userID()).getKey();
+
         new Nodes().userCharacters(new CurrentUser().userID()).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -70,7 +68,6 @@ public class CharacterDetailsActivity extends AppCompatActivity {
         Log.d("WOWC", "onCreate: CLASS ID : " + characterClass.getId());
         ImageView factionShield = (ImageView) findViewById(R.id.factionShield);
         Faction faction = character.getCharacterFaction();
-//        switch can't manage long.... u.u
         if (characterFaction.getId() == 1) {
             factionShield.setImageResource(R.mipmap.ic_wow_alliance_48dp);
             factionShield.setBackgroundColor(getResources().getColor(R.color.allianceBackground));

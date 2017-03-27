@@ -20,7 +20,7 @@
     <style name="FullscreenTheme.NoActionBar">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
-        <item name="android:windowBackground">@color/colorPrimaryDark</item>
+        <item name="android:windowBackground">@mipmap/bg_login_wowchar</item>
     </style>
 
     <style name="FullscreenTheme" parent="AppTheme">

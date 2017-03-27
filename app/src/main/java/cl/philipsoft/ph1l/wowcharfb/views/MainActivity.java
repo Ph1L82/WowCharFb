@@ -26,8 +26,6 @@ import cl.philipsoft.ph1l.wowcharfb.views.login.LogoutValidation;
 
 public class MainActivity extends AppCompatActivity implements CharacterCallback, LogoutCallback {
 
-    private CharacterListFragment characterListFragment;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -110,7 +108,6 @@ public class MainActivity extends AppCompatActivity implements CharacterCallback
             dataSeeder.createClasses();
             Log.d("WOWCDATA", "dataLoader: Clases creadas");
         }
-
     }
 
     @Override

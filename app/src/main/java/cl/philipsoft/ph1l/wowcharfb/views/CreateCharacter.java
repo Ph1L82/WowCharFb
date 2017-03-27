@@ -12,10 +12,10 @@ import cl.philipsoft.ph1l.wowcharfb.models.Race;
  */
 
 public class CreateCharacter {
-    private CharacterCallback callback;
+    private CharacterCallback characterCallback;
 
     public CreateCharacter(CharacterCallback callback) {
-        this.callback = callback;
+        this.characterCallback = callback;
     }
 
     public void validation(Character character, long charFaction, long charRace, long charClass) {
@@ -30,17 +30,18 @@ public class CreateCharacter {
                 Class characterClass = Class.findById(Class.class, charClass);
                 characterClass.save();
 //                character.save();
-                String uid = new CurrentUser().userID().toString();
-                String characterID = uid + character.getCharacterName().toString();
+                String uid = new CurrentUser().userID();
+                String characterID = uid + character.getCharacterName();
+                character.setId(characterID);
                 new Nodes().userCharacters(uid).child(characterID).setValue(character);
-                callback.created(character);
+                characterCallback.created(character);
             } else {
-                callback.noName();
+                characterCallback.noName();
             }
         } else if (character.getCharacterFaction() != null) {
-            callback.noClass();
+            characterCallback.noClass();
         } else {
-            callback.noFaction();
+            characterCallback.noFaction();
         }
     }
 }

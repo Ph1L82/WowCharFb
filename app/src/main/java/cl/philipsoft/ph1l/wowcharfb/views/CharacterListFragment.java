@@ -24,8 +24,6 @@ import cl.philipsoft.ph1l.wowcharfb.data.Nodes;
  */
 public class CharacterListFragment extends Fragment implements CharacterClickListener {
 
-    public static final String CHARACTER = "cl.philipsoft.ph1l.wowchar.views.CharacterListFragment.CHARACTER";
-
     public CharacterListFragment() {
     }
 
@@ -63,14 +61,9 @@ public class CharacterListFragment extends Fragment implements CharacterClickLis
         });
     }
 
-//    public void addCharacter(Character character) {
-//        charactersAdapter.addCharacter(character);
-//    }
-
-
-
     @Override
     public void viewClickedCharId(String id) {
+        Toast.makeText(getContext(), "Char ID: " + id, Toast.LENGTH_SHORT).show();
         Intent intent = new Intent(getActivity(), CharacterDetailsActivity.class);
         intent.putExtra("id", id);
         startActivity(intent);
@@ -78,16 +71,6 @@ public class CharacterListFragment extends Fragment implements CharacterClickLis
 
     @Override
     public void removeClickedCharId(String id) {
-        new Nodes().userCharacters(new CurrentUser().userID()).removeValue();
-    }
-
-
-    public static class CharacterHolder extends RecyclerView.ViewHolder {
-
-        public CharacterHolder(View itemView) {
-            super(itemView);
-        }
-
-
+        new Nodes().userCharacters(new CurrentUser().userID()).child(id).removeValue();
     }
 }

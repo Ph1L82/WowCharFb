@@ -15,7 +15,6 @@ import android.widget.TextView;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 
 import cl.philipsoft.ph1l.wowcharfb.R;
-import cl.philipsoft.ph1l.wowcharfb.data.CurrentUser;
 import cl.philipsoft.ph1l.wowcharfb.data.Nodes;
 import cl.philipsoft.ph1l.wowcharfb.models.Character;
 import cl.philipsoft.ph1l.wowcharfb.models.Class;
@@ -32,8 +31,7 @@ import static cl.philipsoft.ph1l.wowcharfb.R.drawable.bg_horde;
 
 public class CharactersAdapter extends FirebaseRecyclerAdapter<Character, CharactersAdapter.CharacterHolder> {
 
-    private static final String CURRENT_EMAIL = new CurrentUser().email();
-    private CharacterClickListener characterClickListener;
+    CharacterClickListener characterClickListener;
 
 
     public CharactersAdapter(String uid) {
@@ -88,9 +86,8 @@ public class CharactersAdapter extends FirebaseRecyclerAdapter<Character, Charac
         viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String id = new CurrentUser().userID() + model.getCharacterName().toString();
-//                Toast.makeText(v.getContext(), "CharID: " + id, Toast.LENGTH_SHORT).show();
-                Log.d("WOWC", "CHARACTERSADAPTER CharID: " + id);
+                String id = model.getId();
+                Log.d("WOWC", "CHARACTERSADAPTER Sent CharID: " + id);
                 characterClickListener.viewClickedCharId(id);
             }
         });
@@ -105,14 +102,15 @@ public class CharactersAdapter extends FirebaseRecyclerAdapter<Character, Charac
                         .setPositiveButton("Eliminar", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
-                                String id = new CurrentUser().userID() + model.getCharacterName().toString();
+                                String id = model.getId();
+                                Log.d("WOWC:FBREMOVE", "onClick: REMOVE CHARACTER ID:" + id);
                                 characterClickListener.removeClickedCharId(id);
                             }
                         })
                         .setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
-
+                                Log.d("WOWC:FBREMOVE", "onClick: REMOVE CHARACTER CANCELED");
                             }
                         });
                 return true;
