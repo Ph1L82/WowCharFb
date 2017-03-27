@@ -23,25 +23,14 @@ import cl.philipsoft.ph1l.wowcharfb.views.MainActivity;
  * An example full-screen activity that shows and hides the system UI (i.e.
  * status bar and navigation/system bar) with user interaction.
  */
-public class LoginActivity extends AppCompatActivity {
+public class LoginActivity extends AppCompatActivity implements LoginCallback {
     private static final int RC_SIGN_IN = 666;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         setContentView(R.layout.activity_login);
-        startActivityForResult(
-                AuthUI.getInstance()
-                        .createSignInIntentBuilder()
-                        .setProviders(Arrays.asList(new AuthUI.IdpConfig.Builder(AuthUI.EMAIL_PROVIDER).build(),
-                                new AuthUI.IdpConfig.Builder(AuthUI.GOOGLE_PROVIDER).build(),
-                                new AuthUI.IdpConfig.Builder(AuthUI.FACEBOOK_PROVIDER).build(),
-                                new AuthUI.IdpConfig.Builder(AuthUI.TWITTER_PROVIDER).build()))
-                        .setIsSmartLockEnabled(!BuildConfig.DEBUG)
-                        .setTheme(R.style.FullscreenTheme_NoActionBar)
-                        .build(),
-                RC_SIGN_IN);
+        new LoginValidation(this).validate();
     }
 
     @Override
@@ -53,12 +42,7 @@ public class LoginActivity extends AppCompatActivity {
 
             // Successfully signed in
             if (resultCode == ResultCodes.OK) {
-                User user = new User();
-                user.setUid(new CurrentUser().userID());
-                user.setEmail(new CurrentUser().email());
-                user.setName(new CurrentUser().name());
-                new Nodes().users().child(user.getUid()).setValue(user);
-                startActivity(new Intent(this, MainActivity.class));
+                signedIn();
                 finish();
                 return;
             } else {
@@ -80,5 +64,33 @@ public class LoginActivity extends AppCompatActivity {
                 }
             }
         }
+    }
+
+    @Override
+    public void signedIn() {
+        User user = new User();
+        CurrentUser currentUser = new CurrentUser();
+        user.setUid(currentUser.userID());
+        user.setEmail(currentUser.email());
+        user.setName(currentUser.name());
+        user.setPhoto(currentUser.photo());
+        user.setAuthProviderID(currentUser.authProviderID());
+        new Nodes().users().child(user.getUid()).setValue(user);
+        startActivity(new Intent(this, MainActivity.class));
+    }
+
+    @Override
+    public void signIn() {
+        startActivityForResult(
+                AuthUI.getInstance()
+                        .createSignInIntentBuilder()
+                        .setProviders(Arrays.asList(new AuthUI.IdpConfig.Builder(AuthUI.EMAIL_PROVIDER).build(),
+                                new AuthUI.IdpConfig.Builder(AuthUI.GOOGLE_PROVIDER).build(),
+                                new AuthUI.IdpConfig.Builder(AuthUI.FACEBOOK_PROVIDER).build(),
+                                new AuthUI.IdpConfig.Builder(AuthUI.TWITTER_PROVIDER).build()))
+                        .setIsSmartLockEnabled(!BuildConfig.DEBUG)
+                        .setTheme(R.style.FullscreenTheme_NoActionBar)
+                        .build(),
+                RC_SIGN_IN);
     }
 }

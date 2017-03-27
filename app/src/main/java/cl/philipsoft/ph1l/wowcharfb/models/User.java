@@ -6,7 +6,28 @@ package cl.philipsoft.ph1l.wowcharfb.models;
 
 public class User {
 
-    private String name, uid, email;
+    private String name;
+    private String uid;
+    private String email;
+    private String photo;
+
+    public String getPhoto() {
+        return photo;
+    }
+
+    public void setPhoto(String photo) {
+        this.photo = photo;
+    }
+
+    public String getAuthProviderID() {
+        return authProviderID;
+    }
+
+    public void setAuthProviderID(String authProviderID) {
+        this.authProviderID = authProviderID;
+    }
+
+    private String authProviderID;
 
     public String getName() {
         return name;

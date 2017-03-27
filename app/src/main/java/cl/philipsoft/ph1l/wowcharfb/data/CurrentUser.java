@@ -24,4 +24,12 @@ public class CurrentUser {
     public String userID() {
         return get().getUid();
     }
+
+    public String photo() {
+        return get().getPhotoUrl().toString();
+    }
+
+    public String authProviderID() {
+        return get().getProviderId();
+    }
 }

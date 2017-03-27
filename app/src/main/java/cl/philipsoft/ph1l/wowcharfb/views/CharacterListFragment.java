@@ -11,8 +11,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
-import com.firebase.ui.database.FirebaseRecyclerAdapter;
+import android.widget.Toast;
 
 import cl.philipsoft.ph1l.wowcharfb.R;
 import cl.philipsoft.ph1l.wowcharfb.adapters.CharacterClickListener;
@@ -58,6 +57,7 @@ public class CharacterListFragment extends Fragment implements CharacterClickLis
                 new Handler().postDelayed(new Runnable() {
                     @Override
                     public void run() {
+                        Toast.makeText(getContext(), "I really should find something to do with this now...or not?", Toast.LENGTH_SHORT).show();
                         reloadSr.setRefreshing(false);
                     }
                 }, 800);
