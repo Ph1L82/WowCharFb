@@ -34,7 +34,6 @@ public class CharacterDetailsActivity extends AppCompatActivity {
     private String uid, charID;
     private TextView charNameTv, charFactionTv, charRaceTv, charClassTv, levelTv, staminaTv, strengthTv, agilityTv, intellectTv, spiritTv;
     private ImageView factionShield;
-    private Button deleteBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -120,14 +119,14 @@ public class CharacterDetailsActivity extends AppCompatActivity {
                     }
                 });
 
-                deleteBtn = (Button) findViewById(R.id.deleteBtn);
+                Button deleteBtn = (Button) findViewById(R.id.deleteBtn);
                 deleteBtn.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        new AlertDialog.Builder(v.getContext())
-                                .setIcon(R.drawable.com_facebook_close)
+                        new AlertDialog.Builder(CharacterDetailsActivity.this)
                                 .setTitle("Eliminar personaje")
                                 .setMessage("Eliminarás el personaje de forma permanente")
+                                .setIcon(android.R.drawable.ic_input_delete)
                                 .setPositiveButton("Eliminar", new DialogInterface.OnClickListener() {
                                     @Override
                                     public void onClick(DialogInterface dialog, int which) {

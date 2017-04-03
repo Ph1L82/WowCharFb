@@ -57,8 +57,7 @@
     <string name="class_Shaman">Chamán</string>
     <string name="class_Warlock">Brujo</string>
     <string name="class_Warrior">Guerrero</string>
-    <string name="class_Death_Knight">Caballero de la Muerte</string>
-    <string name="title_activity_character_details">CharacterDetailsActivity</string>
+    <string name="title_activity_character_details">Detalles del personaje</string>
 
     <string name="title_activity_login">Wow Char FireBase</string>
     <string name="dummy_button">Dummy Button</string>
