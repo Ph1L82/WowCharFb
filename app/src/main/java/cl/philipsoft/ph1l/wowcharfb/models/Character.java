@@ -7,19 +7,15 @@ import java.io.Serializable;
  */
 
 public class Character implements Serializable {
-    private String id;
+
     private Faction characterFaction;
     private Race characterRace;
-    private Class characterClass;
-    private String characterName;
+    private CharacterClass characterClass;
+    private String characterName, id;
     private int characterLevel = 1;
     private int strength, agility, stamina, intellect, spirit;
     private double statMultiplier;
-    private boolean shared;
-
-    public boolean isShared() {
-        return shared;
-    }
+    private boolean favorite;
 
     public String getId() {
         return id;
@@ -29,8 +25,12 @@ public class Character implements Serializable {
         this.id = id;
     }
 
-    public void setShared(boolean shared) {
-        this.shared = shared;
+    public boolean isFavorite() {
+        return favorite;
+    }
+
+    public void setFavorite(boolean favorite) {
+        this.favorite = favorite;
     }
 
     public int getStrength() {
@@ -88,7 +88,7 @@ public class Character implements Serializable {
         this.characterName = characterName;
     }
 
-    public Character(Faction characterFaction, Race characterRace, Class characterClass, String characterName, int characterLevel) {
+    public Character(Faction characterFaction, Race characterRace, CharacterClass characterClass, String characterName, int characterLevel) {
         this.characterFaction = characterFaction;
         this.characterRace = characterRace;
         this.characterClass = characterClass;
@@ -96,7 +96,7 @@ public class Character implements Serializable {
         this.characterLevel = characterLevel;
     }
 
-    public Character(Faction characterFaction, Race characterRace, Class characterClass, String characterName) {
+    public Character(Faction characterFaction, Race characterRace, CharacterClass characterClass, String characterName) {
         this.characterFaction = characterFaction;
         this.characterRace = characterRace;
         this.characterClass = characterClass;
@@ -119,11 +119,11 @@ public class Character implements Serializable {
         this.characterRace = characterRace;
     }
 
-    public Class getCharacterClass() {
+    public CharacterClass getCharacterClass() {
         return characterClass;
     }
 
-    public void setCharacterClass(Class characterClass) {
+    public void setCharacterClass(CharacterClass characterClass) {
         this.characterClass = characterClass;
     }
 

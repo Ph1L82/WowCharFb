@@ -23,55 +23,55 @@
         android:layout_gravity="center_horizontal">
 
         <RadioButton
-            android:id="@+id/classDruid"
+            android:id="@+id/class.1_Druid"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:text="@string/class_Druid" />
 
         <RadioButton
-            android:id="@+id/classHunter"
+            android:id="@+id/class.2_Hunter"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:text="@string/class_Hunter" />
 
         <RadioButton
-            android:id="@+id/classMage"
+            android:id="@+id/class.3_Mage"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:text="@string/class_Mage" />
 
         <RadioButton
-            android:id="@+id/classPaladin"
+            android:id="@+id/class.4_Paladin"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:text="@string/class_Paladin" />
 
         <RadioButton
-            android:id="@+id/classPriest"
+            android:id="@+id/class.5_Priest"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:text="@string/class_Priest" />
 
         <RadioButton
-            android:id="@+id/classRogue"
+            android:id="@+id/class.6_Rogue"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:text="@string/class_Rogue" />
 
         <RadioButton
-            android:id="@+id/classShaman"
+            android:id="@+id/class.7_Shaman"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:text="@string/class_Shaman" />
 
         <RadioButton
-            android:id="@+id/classWarlock"
+            android:id="@+id/class.8_Warlock"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:text="@string/class_Warlock" />
 
         <RadioButton
-            android:id="@+id/classWarrior"
+            android:id="@+id/class.9_Warrior"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:text="@string/class_Warrior" />

@@ -11,36 +11,49 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.util.List;
-
 import cl.philipsoft.ph1l.wowcharfb.R;
-import cl.philipsoft.ph1l.wowcharfb.data.CurrentUser;
-import cl.philipsoft.ph1l.wowcharfb.data.Nodes;
 import cl.philipsoft.ph1l.wowcharfb.models.Character;
-import cl.philipsoft.ph1l.wowcharfb.models.Class;
+import cl.philipsoft.ph1l.wowcharfb.models.CharacterClass;
 import cl.philipsoft.ph1l.wowcharfb.models.Faction;
 import cl.philipsoft.ph1l.wowcharfb.models.Race;
 
 public class ChooseClassActivity extends AppCompatActivity implements CharacterCallback {
 
+    private long factionID, raceID, classID;
+    private Faction charFaction;
+    private Race charRace;
+    private CharacterClass charClass;
+    private Button saveBtn;
+    private TextView name;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_choose_class);
-//        final Faction charFaction = (Faction) getIntent().getSerializableExtra("Faction");
-//        final Race charRace = (Race) getIntent().getSerializableExtra("Race");
-        final long factionID = getIntent().getLongExtra("factionID", 1);
-        final long raceID = getIntent().getLongExtra("raceID", 1);
-        final Faction charFaction = Faction.findById(Faction.class, factionID);
-        final Race charRace = Race.findById(Race.class, raceID);
-        final TextView name = (TextView) findViewById(R.id.nameEt);
-        final Button saveBtn = (Button) findViewById(R.id.saveBtn);
+
+        factionID = getIntent().getLongExtra("factionID", 1);
+        raceID = getIntent().getLongExtra("raceID", 1);
+
+
+        charFaction = Faction.findById(Faction.class, factionID);
+        charRace = Race.findById(Race.class, raceID);
+        name = (TextView) findViewById(R.id.nameEt);
+        saveBtn = (Button) findViewById(R.id.saveBtn);
+
         saveBtn.setEnabled(false);
         final RadioGroup classRg = (RadioGroup) findViewById(R.id.classesRg);
         classRg.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, @IdRes int checkedId) {
-                Log.d("WOWC", "onCheckedChanged: " + getResources().getResourceEntryName(classRg.getCheckedRadioButtonId()).replace("class", ""));
+                ////
+
+                String checkedRadioButton = getResources().getResourceEntryName(checkedId);
+                String checked = checkedRadioButton.substring(checkedRadioButton.indexOf(".") + 1, checkedRadioButton.indexOf("_"));
+                Log.d("WOWC", "onCheckedChanged: classID: " + checked);
+                classID = Long.parseLong(checked);
+                charClass = CharacterClass.findById(CharacterClass.class, classID);
+                Log.d("WOWC", "onCheckedChanged: ClassName" + charClass.getClassName());
                 saveBtn.setEnabled(true);
             }
         });
@@ -48,24 +61,12 @@ public class ChooseClassActivity extends AppCompatActivity implements CharacterC
         saveBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String className = getResources().getResourceEntryName(classRg.getCheckedRadioButtonId()).replace("class", "");
-                List<Class> charClassList = Class.find(Class.class, "class_name = ?", className);
-                if (!charClassList.isEmpty()) {
-                    Class charClass = charClassList.get(0);
-                    Log.d("WOWC", "onClick: CHOSEN CLASS NAME: " + charClass.getClassName());
-                    Log.d("WOWC", "onClick: CHOSEN CLASS ID: " + charClass.getId());
-                    long classID = charClass.getId();
-                    CreateCharacter createCharacter = new CreateCharacter(ChooseClassActivity.this);
-                    Character character = new Character(charFaction, charRace, charClass, name.getText().toString());
-                    createCharacter.validation(character, factionID, raceID, classID);
+                Character character = new Character(charFaction, charRace, charClass, name.getText().toString());
+                CreateCharacter createCharacter = new CreateCharacter(ChooseClassActivity.this);
+                createCharacter.validation(character);
 
-                    new Nodes().userCharacters(new CurrentUser().userID()).push().setValue(character);
-
-                    Intent intent = new Intent(ChooseClassActivity.this, MainActivity.class);
-                    startActivity(intent);
-                } else {
-                    Log.d("WOWC", "onClick: Clase no encontrada: " + className);
-                }
+                Intent intent = new Intent(ChooseClassActivity.this, MainActivity.class);
+                startActivity(intent);
             }
         });
     }

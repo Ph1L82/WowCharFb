@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.RadioGroup;
+import android.widget.Toast;
 
 import java.util.List;
 
@@ -19,8 +20,8 @@ import cl.philipsoft.ph1l.wowcharfb.models.Race;
 public class ChooseFactionRaceActivity extends AppCompatActivity {
     private Faction faction;
     private Race race;
-    private String raceName;
     private Long factionID, raceID;
+    private Button sendBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,7 +33,7 @@ public class ChooseFactionRaceActivity extends AppCompatActivity {
         final RadioGroup hordeRg = (RadioGroup) findViewById(R.id.racesHordeRg);
         allianceRg.setEnabled(false);
         hordeRg.setEnabled(false);
-        final Button sendBtn = (Button) findViewById(R.id.sendBtn);
+        sendBtn = (Button) findViewById(R.id.sendBtn);
         sendBtn.setEnabled(false);
         allianceBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -41,10 +42,9 @@ public class ChooseFactionRaceActivity extends AppCompatActivity {
                 hordeBtn.setVisibility(View.GONE);
                 hordeRg.setVisibility(View.GONE);
                 allianceRg.setEnabled(true);
-                List<Faction> factionList = Faction.find(Faction.class, "name = ?", "Alliance");
+                faction = Faction.findById(Faction.class, 1);
                 sendBtn.setBackgroundColor(getResources().getColor(R.color.allianceBackground));
                 sendBtn.setTextColor(getResources().getColor(R.color.allianceFront));
-                faction = factionList.get(0);
                 Log.d("WOWC", "onCheckedChanged: CHOSEN FACTION NAME: " + faction.getName());
                 Log.d("WOWC", "onCheckedChanged: CHOSEN FACTION ID : " + faction.getId());
                 factionID = faction.getId();
@@ -58,10 +58,9 @@ public class ChooseFactionRaceActivity extends AppCompatActivity {
                 allianceBtn.setVisibility(View.GONE);
                 allianceRg.setVisibility(View.GONE);
                 hordeRg.setEnabled(true);
-                List<Faction> factionList = Faction.find(Faction.class, "name = ?", "Horde");
                 sendBtn.setBackgroundColor(getResources().getColor(R.color.hordeBackground));
                 sendBtn.setTextColor(getResources().getColor(R.color.hordeFront));
-                faction = factionList.get(0);
+                faction = Faction.findById(Faction.class, 2);
                 Log.d("WOWC", "onCheckedChanged: CHOSEN FACTION NAME: " + faction.getName());
                 Log.d("WOWC", "onCheckedChanged: CHOSEN FACTION ID : " + faction.getId());
                 factionID = faction.getId();
@@ -71,38 +70,14 @@ public class ChooseFactionRaceActivity extends AppCompatActivity {
         allianceRg.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, @IdRes int checkedId) {
-                raceName = getResources().getResourceEntryName(checkedId).replace("race", "");
-                raceName = raceName.replace("Rb", "");
-                Log.d("WOWC", "onCheckedChanged: raceName: " + raceName);
-                List<Race> raceList = Race.find(Race.class, "race_name = ?", raceName);
-                if (!raceList.isEmpty()) {
-                    race = raceList.get(0);
-                    Log.d("WOWC", "onCheckedChanged: CHOSEN RACE NAME: " + race.getRaceName());
-                    Log.d("WOWC", "onCheckedChanged: CHOSEN RACE ID: " + race.getId());
-                    raceID = race.getId();
-                    sendBtn.setEnabled(true);
-                } else {
-                    Log.d("WOWC", "onCheckedChanged: raceList size: " + raceList.size());
-                }
+                selectRace(checkedId);
             }
         });
 
         hordeRg.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, @IdRes int checkedId) {
-                raceName = getResources().getResourceEntryName(checkedId).replace("race", "");
-                raceName = raceName.replace("Rb", "");
-                Log.d("WOWC", "onCheckedChanged: raceName: " + raceName);
-                List<Race> raceList = Race.find(Race.class, "race_name = ?", raceName);
-                if (!raceList.isEmpty()) {
-                    race = raceList.get(0);
-                    Log.d("WOWC", "onCheckedChanged: CHOSEN RACE NAME: " + race.getRaceName());
-                    Log.d("WOWC", "onCheckedChanged: CHOSEN RACE ID: " + race.getId());
-                    raceID = race.getId();
-                    sendBtn.setEnabled(true);
-                } else {
-                    Log.d("WOWC", "onCheckedChanged: raceList size: " + raceList.size());
-                }
+                selectRace(checkedId);
             }
         });
 
@@ -116,5 +91,15 @@ public class ChooseFactionRaceActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+    }
+
+    private void selectRace(int checkedId) {
+        String checkedRadioButton = getResources().getResourceEntryName(checkedId);
+        String checked = checkedRadioButton.substring(checkedRadioButton.indexOf(".") + 1, checkedRadioButton.indexOf("_"));
+        Log.d("WOWC", "onCheckedChanged: raceID: " + checked);
+        raceID = Long.parseLong(checked);
+        race = Race.findById(Race.class, raceID);
+        Log.d("WOWC", "onCheckedChanged: RaceName" + race.getRaceName());
+        sendBtn.setEnabled(true);
     }
 }

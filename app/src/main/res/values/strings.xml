@@ -17,6 +17,7 @@
     <string name="instructions_character_name">Ingresa el nombre que quieres darle a tu personaje.</string>
     <string name="send_char_selection">Cuando hayas seleccionado facción, raza y clase, presiona (>) para ver tu resultado.</string>
     <string name="reset_btn">Resetear Estatadísticas</string>
+    <string name="delete_btn">Eliminar Personaje</string>
     <string name="level">Nivel: 1</string>
     <string name="character_name">Nombre: </string>
     <string name="character_class">Clase: </string>

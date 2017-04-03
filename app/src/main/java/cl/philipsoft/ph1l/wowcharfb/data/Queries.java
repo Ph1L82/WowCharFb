@@ -3,8 +3,7 @@ package cl.philipsoft.ph1l.wowcharfb.data;
 import java.util.ArrayList;
 import java.util.List;
 
-import cl.philipsoft.ph1l.wowcharfb.models.Character;
-import cl.philipsoft.ph1l.wowcharfb.models.Class;
+import cl.philipsoft.ph1l.wowcharfb.models.CharacterClass;
 import cl.philipsoft.ph1l.wowcharfb.models.Faction;
 import cl.philipsoft.ph1l.wowcharfb.models.Race;
 
@@ -32,9 +31,9 @@ public class Queries {
         return races;
     }
 
-    public List<Class> classes() {
-        List<Class> classes = new ArrayList<>();
-        List<Class> classList = Class.listAll(Class.class); //LOL!
+    public List<CharacterClass> classes() {
+        List<CharacterClass> classes = new ArrayList<>();
+        List<CharacterClass> classList = CharacterClass.listAll(CharacterClass.class); //LOL!
         if (classList != null && classList.size() > 0) {
             classes.addAll(classList);
         }

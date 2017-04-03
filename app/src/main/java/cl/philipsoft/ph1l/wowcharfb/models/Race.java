@@ -11,6 +11,28 @@ import java.io.Serializable;
  */
 
 public class Race extends SugarRecord implements Serializable {
+    private Long id;
+
+    @Override
+    public Long getId() {
+        return id;
+    }
+
+    @Override
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Race(Long id, int baseStrength, int baseAgility, int baseStamina, int baseIntellect, int baseSpirit, String raceName) {
+
+        this.id = id;
+        this.baseStrength = baseStrength;
+        this.baseAgility = baseAgility;
+        this.baseStamina = baseStamina;
+        this.baseIntellect = baseIntellect;
+        this.baseSpirit = baseSpirit;
+        this.raceName = raceName;
+    }
 
     private int baseStrength, baseAgility, baseStamina, baseIntellect, baseSpirit;
     private String raceName;

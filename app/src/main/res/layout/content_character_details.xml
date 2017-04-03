@@ -9,126 +9,135 @@
     tools:showIn="@layout/activity_character_details">
 
     <LinearLayout
-        android:paddingLeft="20dp"
-        android:paddingTop="10dp"
-        android:paddingRight="20dp"
-        android:paddingBottom="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:paddingBottom="10dp"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:paddingTop="10dp">
 
         <TextView
             android:id="@+id/charNameTv"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingLeft="16dp"
-            android:paddingTop="8dp"
-            android:paddingRight="16dp"
             android:paddingBottom="8dp"
-            android:text="@string/character_name"/>
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp"
+            android:paddingTop="8dp"
+            android:text="@string/character_name" />
 
         <TextView
             android:id="@+id/levelTv"
-            android:text="@string/level"
-            android:layout_centerHorizontal="true"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:paddingBottom="8dp"
             android:paddingLeft="16dp"
-            android:paddingTop="8dp"
             android:paddingRight="16dp"
-            android:paddingBottom="8dp"/>
+            android:paddingTop="8dp"
+            android:text="@string/level" />
 
         <TextView
             android:id="@+id/charFactionTv"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingLeft="16dp"
-            android:paddingTop="8dp"
-            android:paddingRight="16dp"
             android:paddingBottom="8dp"
-            android:text="@string/character_faction"/>
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp"
+            android:paddingTop="8dp"
+            android:text="@string/character_faction" />
 
         <TextView
             android:id="@+id/charRaceTv"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingLeft="16dp"
-            android:paddingTop="8dp"
-            android:paddingRight="16dp"
             android:paddingBottom="8dp"
-            android:text="@string/character_race"/>
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp"
+            android:paddingTop="8dp"
+            android:text="@string/character_race" />
 
         <TextView
             android:id="@+id/charClassTv"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingLeft="16dp"
-            android:paddingTop="8dp"
-            android:paddingRight="16dp"
             android:paddingBottom="8dp"
-            android:text="@string/character_class"/>
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp"
+            android:paddingTop="8dp"
+            android:text="@string/character_class" />
 
         <TextView
             android:id="@+id/statsTv"
-            android:paddingLeft="8dp"
-            android:paddingTop="16dp"
-            android:paddingRight="8dp"
-            android:paddingBottom="16dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:paddingBottom="16dp"
+            android:paddingLeft="8dp"
+            android:paddingRight="8dp"
+            android:paddingTop="16dp"
             android:text="@string/statistics"
-            android:textColor="@color/textColorPrimary"/>
+            android:textColor="@color/textColorPrimary" />
 
 
         <TextView
             android:id="@+id/staminaTv"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingLeft="16dp"
-            android:paddingTop="8dp"
-            android:paddingRight="16dp"
             android:paddingBottom="8dp"
-            android:text="@string/stamina"/>
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp"
+            android:paddingTop="8dp"
+            android:text="@string/stamina" />
 
         <TextView
             android:id="@+id/strengthTv"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingLeft="16dp"
-            android:paddingTop="8dp"
-            android:paddingRight="16dp"
             android:paddingBottom="8dp"
-            android:text="@string/strength"/>
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp"
+            android:paddingTop="8dp"
+            android:text="@string/strength" />
 
         <TextView
             android:id="@+id/intellectTv"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingLeft="16dp"
-            android:paddingTop="8dp"
-            android:paddingRight="16dp"
             android:paddingBottom="8dp"
-            android:text="@string/intellect"/>
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp"
+            android:paddingTop="8dp"
+            android:text="@string/intellect" />
 
         <TextView
             android:id="@+id/agilityTv"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingLeft="16dp"
-            android:paddingTop="8dp"
-            android:paddingRight="16dp"
             android:paddingBottom="8dp"
-            android:text="@string/agility"/>
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp"
+            android:paddingTop="8dp"
+            android:text="@string/agility" />
 
         <TextView
             android:id="@+id/spiritTv"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingLeft="16dp"
-            android:paddingTop="8dp"
-            android:paddingRight="16dp"
             android:paddingBottom="8dp"
-            android:text="@string/spirit"/>
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp"
+            android:paddingTop="8dp"
+            android:text="@string/spirit" />
+
+        <Button
+            android:id="@+id/deleteBtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="8dp"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp"
+            android:paddingTop="8dp"
+            android:text="@string/delete_btn" />
     </LinearLayout>
 
 </android.support.v4.widget.NestedScrollView>

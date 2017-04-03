@@ -9,7 +9,25 @@ import java.io.Serializable;
  * Faction : Agrupacion de razas
  */
 
-public class Faction extends SugarRecord implements Serializable{
+public class Faction extends SugarRecord implements Serializable {
+    private Long id;
+
+    @Override
+    public Long getId() {
+        return id;
+    }
+
+    @Override
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Faction(Long id, String name) {
+
+        this.id = id;
+        this.name = name;
+    }
+
     private String name;
 
     public Faction() {

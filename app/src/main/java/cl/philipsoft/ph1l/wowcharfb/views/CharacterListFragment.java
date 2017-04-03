@@ -8,6 +8,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -43,7 +44,7 @@ public class CharacterListFragment extends Fragment implements CharacterClickLis
         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
         recyclerView.setLayoutManager(layoutManager);
 
-        CharactersAdapter charactersAdapter = new CharactersAdapter(new CurrentUser().userID());
+        CharactersAdapter charactersAdapter = new CharactersAdapter(new CurrentUser().userID(), this);
         recyclerView.setAdapter(charactersAdapter);
 
         final SwipeRefreshLayout reloadSr = (SwipeRefreshLayout) view.findViewById(R.id.reloadSr);
@@ -63,7 +64,7 @@ public class CharacterListFragment extends Fragment implements CharacterClickLis
 
     @Override
     public void viewClickedCharId(String id) {
-        Toast.makeText(getContext(), "Char ID: " + id, Toast.LENGTH_SHORT).show();
+        Log.d("WOWC", "CharacterListFragment viewClickedCharId: characterID: " + id);
         Intent intent = new Intent(getActivity(), CharacterDetailsActivity.class);
         intent.putExtra("id", id);
         startActivity(intent);

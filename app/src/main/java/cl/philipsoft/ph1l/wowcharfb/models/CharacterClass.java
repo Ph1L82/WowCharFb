@@ -6,18 +6,18 @@ import java.io.Serializable;
 
 /**
  * Created by phil_ on 11-02-2017.
- * Class: clase o tipo de jugador pertenece a una raza
+ * CharacterClass: clase o tipo de jugador pertenece a una raza
  * no todas las clases pueden ser utilizadas por todas las razas
  */
 
-public class Class extends SugarRecord implements Serializable {
+public class CharacterClass extends SugarRecord implements Serializable {
     private int bonusStrength, bonusAgility, bonusStamina, bonusIntellect, bonusSpirit;
     private String className;
 
-    public Class() {
+    public CharacterClass() {
     }
 
-    public Class(int bonusStrength, int bonusAgility, int bonusStamina, int bonusIntellect, int bonusSpirit, String className) {
+    public CharacterClass(int bonusStrength, int bonusAgility, int bonusStamina, int bonusIntellect, int bonusSpirit, String className) {
         this.bonusStrength = bonusStrength;
         this.bonusAgility = bonusAgility;
         this.bonusStamina = bonusStamina;

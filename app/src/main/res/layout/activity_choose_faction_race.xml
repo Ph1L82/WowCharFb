@@ -87,37 +87,37 @@
             android:layout_marginTop="16dp">
 
             <RadioButton
-                android:id="@+id/raceHumanRb"
+                android:id="@+id/race.1_HumanRb"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:text="@string/race_human" />
 
             <RadioButton
-                android:id="@+id/raceDwarfRb"
+                android:id="@+id/race.2_DwarfRb"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:text="@string/race_dwarf" />
 
             <RadioButton
-                android:id="@+id/raceNightElfRb"
+                android:id="@+id/race.3_NightElfRb"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:text="@string/race_Night_Elf" />
 
             <RadioButton
-                android:id="@+id/raceGnomeRb"
+                android:id="@+id/race.4_GnomeRb"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:text="@string/race_gnome" />
 
             <RadioButton
-                android:id="@+id/raceDraeneiRb"
+                android:id="@+id/race.5_DraeneiRb"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:text="@string/race_Draenei" />
 
             <RadioButton
-                android:id="@+id/raceWorgenRb"
+                android:id="@+id/race.6_WorgenRb"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:text="@string/race_Worgen" />
@@ -136,37 +136,37 @@
             android:layout_marginTop="16dp">
 
             <RadioButton
-                android:id="@+id/raceOrcRb"
+                android:id="@+id/race.7_OrcRb"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:text="@string/race_Orc" />
 
             <RadioButton
-                android:id="@+id/raceUndeadRb"
+                android:id="@+id/race.8_UndeadRb"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:text="@string/race_Undead" />
 
             <RadioButton
-                android:id="@+id/raceTaurenRb"
+                android:id="@+id/race.9_TaurenRb"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:text="@string/race_Tauren" />
 
             <RadioButton
-                android:id="@+id/raceTrollRb"
+                android:id="@+id/race.10_TrollRb"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:text="@string/race_Troll" />
 
             <RadioButton
-                android:id="@+id/raceBloodElfRb"
+                android:id="@+id/race.11_BloodElfRb"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:text="@string/race_BloodElf" />
 
             <RadioButton
-                android:id="@+id/raceGoblinRb"
+                android:id="@+id/race.12_GoblinRb"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:text="@string/race_Goblin" />

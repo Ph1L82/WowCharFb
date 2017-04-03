@@ -48,6 +48,6 @@
         android:layout_margin="@dimen/fab_margin"
         app:layout_anchor="@id/app_bar"
         app:layout_anchorGravity="bottom|end"
-        app:srcCompat="@mipmap/ic_delete_forever_white_48dp" />
+        app:srcCompat="@mipmap/ic_favorite_border_white_48dp" />
 
 </android.support.design.widget.CoordinatorLayout>
