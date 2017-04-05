@@ -26,7 +26,11 @@ public class CurrentUser {
     }
 
     public String photo() {
-        return get().getPhotoUrl().toString();
+        if (get().getPhotoUrl() != null) {
+            return get().getPhotoUrl().toString();
+        } else {
+            return "https://eu.battle.net/forums/static/images/game-logos/game-logo-wow.png";
+        }
     }
 
     public String authProviderID() {
